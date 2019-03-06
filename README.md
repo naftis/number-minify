@@ -1,4 +1,10 @@
-# number-shortener
+# number-minify
+
+## Usage
+
+```
+npm install number-minify
+```
 
 ## Syntax
 
