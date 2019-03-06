@@ -1,0 +1,28 @@
+{
+  "name": "number-shortener",
+  "version": "1.0.0",
+  "description": "## Negative numbers",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naftis/number-shortener.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naftis/number-shortener/issues"
+  },
+  "homepage": "https://github.com/naftis/number-shortener#readme",
+  "dependencies": {
+    "typescript": "^3.3.3333"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.9",
+    "jest": "^24.1.0",
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.2"
+  }
+}
