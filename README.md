@@ -46,6 +46,6 @@ decode(TODO, {
 > -1234
 ```
 
-By default number-shortener doesn't handle negative numbers. If you wish to have a some solution, you can give a options to `encode` and `decode` to have negative shortens prefixed with a minus sign (-) and then they can be decoded back to negative numbers.
+By default number-minify doesn't handle negative numbers. If you wish to have a some solution, you can give options to `encode` and `decode` to have negative shortens prefixed with a minus sign (-) and then they can be decoded back to negative numbers.
 
 You **should not** use minus sign (-) as a convertable character while using "useNegativePrefix".
