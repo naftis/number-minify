@@ -1,5 +1,5 @@
 {
-  "name": "number-shortener",
+  "name": "number-minify",
   "version": "1.0.0",
   "description": "Converts numbers to shorter strings",
   "main": "dist/index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/naftis/number-shortener.git"
+    "url": "git+https://github.com/naftis/number-minify.git"
   },
   "author": "Pyry Rouvila",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/naftis/number-shortener/issues"
+    "url": "https://github.com/naftis/number-minify/issues"
   },
-  "homepage": "https://github.com/naftis/number-shortener#readme",
+  "homepage": "https://github.com/naftis/number-minify#readme",
   "dependencies": {
     "typescript": "^3.3.3333"
   },
