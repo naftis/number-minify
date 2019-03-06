@@ -18,10 +18,8 @@
     "url": "https://github.com/naftis/number-minify/issues"
   },
   "homepage": "https://github.com/naftis/number-minify#readme",
-  "dependencies": {
-    "typescript": "^3.3.3333"
-  },
   "devDependencies": {
+    "typescript": "^3.3.3333",
     "@types/jest": "^24.0.9",
     "jest": "^24.1.0",
     "ts-jest": "^24.0.0",
