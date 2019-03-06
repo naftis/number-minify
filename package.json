@@ -1,6 +1,6 @@
 {
   "name": "number-minify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Converts numbers to shorter strings",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

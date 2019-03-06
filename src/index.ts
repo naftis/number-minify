@@ -5,14 +5,11 @@
 */
 
 const DEFAULT_OPTIONS = {
-  characters:
-    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_.",
-  useNegativePrefix: false
+  characters: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_.'
 };
 
 interface IOptions {
   characters?: string;
-  useNegativePrefix?: boolean;
 }
 
 /**
@@ -39,30 +36,21 @@ export function encode(
   }
 
   const isNegative = largeInteger < 0;
-  if (isNegative && !options.useNegativePrefix) {
-    throw new Error(
-      `Negative number '${largeInteger}' used without option 'useNegativePrefix' set to 'true'`
-    );
-  }
+  let absoluteInt = Math.abs(largeInteger);
 
-  if (largeInteger === 0) {
+  if (absoluteInt === 0) {
     return options.characters[0];
   }
 
-  const needsToBePrefixed = isNegative && options.useNegativePrefix;
-  if (needsToBePrefixed) {
-    largeInteger *= -1;
-  }
-
   const { length: radix } = options.characters;
-  let output = "";
+  let output = '';
 
-  while (largeInteger !== 0) {
-    output = options.characters[largeInteger % radix] + output;
-    largeInteger = Math.floor(largeInteger / radix);
+  while (absoluteInt !== 0) {
+    output = options.characters[absoluteInt % radix] + output;
+    absoluteInt = Math.floor(absoluteInt / radix);
   }
 
-  return needsToBePrefixed ? `-${output}` : output;
+  return isNegative ? `-${output}` : output;
 }
 
 /**
@@ -78,13 +66,7 @@ export function decode(
     options.characters = DEFAULT_OPTIONS.characters;
   }
 
-  if (
-    !areAllCharactersValid(
-      shortString,
-      options.characters,
-      options.useNegativePrefix
-    )
-  ) {
+  if (!areAllCharactersValid(shortString, options.characters)) {
     throw new Error(
       `All characters in '${shortString}' were not in character set '${
         options.characters
@@ -99,9 +81,9 @@ export function decode(
   }
 
   const firstCharacter: string | undefined = shortString[0];
-  const needsToBePrefixed = options.useNegativePrefix && firstCharacter === "-";
+  const isNegative = firstCharacter === '-';
 
-  if (needsToBePrefixed) {
+  if (isNegative) {
     shortString = shortString.slice(1);
   }
 
@@ -116,16 +98,14 @@ export function decode(
     exp *= radix;
   }
 
-  return needsToBePrefixed ? -output : output;
+  return isNegative ? -output : output;
 }
 
-function areAllCharactersValid(
-  test: string,
-  characters: string,
-  useNegativePrefix?: boolean
-) {
-  const hasAllowedNegativePrefix = useNegativePrefix && test[0] === "-";
-  if (hasAllowedNegativePrefix) {
+function areAllCharactersValid(test: string, characters: string) {
+  const firstCharacter: string | undefined = test[0];
+  const isNegative = firstCharacter === '-';
+
+  if (isNegative) {
     test = test.slice(1);
   }
 
