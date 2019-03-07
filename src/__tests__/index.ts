@@ -112,3 +112,17 @@ it('throws when character set has multiple same characters', () => {
   expect(() => encode(1337, { characters: 'aa' })).toThrow();
   expect(() => decode('aabb', { characters: 'aabb' })).toThrow();
 });
+
+it('converts to the correct character', () => {
+  let encoded = encode(0, { characters: 'abcdef' });
+  expect(encoded).toEqual('a');
+
+  encoded = encode(1, { characters: 'abcdef' });
+  expect(encoded).toEqual('b');
+
+  encoded = encode(2, { characters: 'abcdef' });
+  expect(encoded).toEqual('c');
+
+  encoded = encode(3, { characters: 'abcdef' });
+  expect(encoded).toEqual('d');
+});
