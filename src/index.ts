@@ -6,7 +6,7 @@
 
 const DEFAULT_OPTIONS = {
   characters:
-    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_.",
+    '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_.',
   useNegativePrefix: false
 };
 
@@ -55,7 +55,7 @@ export function encode(
   }
 
   const { length: radix } = options.characters;
-  let output = "";
+  let output = '';
 
   while (largeInteger !== 0) {
     output = options.characters[largeInteger % radix] + output;
@@ -99,7 +99,7 @@ export function decode(
   }
 
   const firstCharacter: string | undefined = shortString[0];
-  const needsToBePrefixed = options.useNegativePrefix && firstCharacter === "-";
+  const needsToBePrefixed = options.useNegativePrefix && firstCharacter === '-';
 
   if (needsToBePrefixed) {
     shortString = shortString.slice(1);
@@ -124,7 +124,7 @@ function areAllCharactersValid(
   characters: string,
   useNegativePrefix?: boolean
 ) {
-  const hasAllowedNegativePrefix = useNegativePrefix && test[0] === "-";
+  const hasAllowedNegativePrefix = useNegativePrefix && test[0] === '-';
   if (hasAllowedNegativePrefix) {
     test = test.slice(1);
   }

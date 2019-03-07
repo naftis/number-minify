@@ -1,6 +1,6 @@
-import { encode, decode } from "../";
+import { encode, decode } from '../';
 
-it("converts correctly without options", () => {
+it('converts correctly without options', () => {
   let encoded = encode(1337);
   let decoded = decode(encoded);
 
@@ -17,18 +17,18 @@ it("converts correctly without options", () => {
   expect(decoded).toEqual(0);
 });
 
-it("throws when encoding negative values without options", () => {
+it('throws when encoding negative values without options', () => {
   expect(() => encode(-1234)).toThrow();
   expect(() => decode(encode(-1234))).toThrow();
-  expect(() => decode("-1234")).toThrow();
+  expect(() => decode('-1234')).toThrow();
 });
 
-it("throws when trying to encode a floating point number", () => {
+it('throws when trying to encode a floating point number', () => {
   expect(() => encode(1.2)).toThrow();
   expect(() => encode(1.123124891)).toThrow();
 });
 
-it("converts correctly with allowing negative numbers", () => {
+it('converts correctly with allowing negative numbers', () => {
   let encoded = encode(-1337, {
     useNegativePrefix: true
   });
@@ -57,58 +57,58 @@ it("converts correctly with allowing negative numbers", () => {
   expect(decoded).toEqual(0);
 });
 
-it("converts correctly with different character set", () => {
-  let encoded = encode(1337, { characters: "abcd" });
-  let decoded = decode(encoded, { characters: "abcd" });
+it('converts correctly with different character set', () => {
+  let encoded = encode(1337, { characters: 'abcd' });
+  let decoded = decode(encoded, { characters: 'abcd' });
 
   expect(decoded).toEqual(1337);
 
-  encoded = encode(1938573912, { characters: "abcd" });
-  decoded = decode(encoded, { characters: "abcd" });
+  encoded = encode(1938573912, { characters: 'abcd' });
+  decoded = decode(encoded, { characters: 'abcd' });
 
   expect(decoded).toEqual(1938573912);
 
-  encoded = encode(0, { characters: "abcd" });
-  decoded = decode(encoded, { characters: "abcd" });
+  encoded = encode(0, { characters: 'abcd' });
+  decoded = decode(encoded, { characters: 'abcd' });
 
   expect(decoded).toEqual(0);
 });
 
-it("uses the different character set", () => {
-  const encoded = encode(1337, { characters: "abcd" });
+it('uses the different character set', () => {
+  const encoded = encode(1337, { characters: 'abcd' });
   const encodedNormally = encode(1337);
 
   expect(encoded).not.toEqual(encodedNormally);
 });
 
-it("converts correctly with different character and allowing negative numbers", () => {
-  let encoded = encode(-1337, { characters: "abcd", useNegativePrefix: true });
+it('converts correctly with different character and allowing negative numbers', () => {
+  let encoded = encode(-1337, { characters: 'abcd', useNegativePrefix: true });
   let decoded = decode(encoded, {
-    characters: "abcd",
+    characters: 'abcd',
     useNegativePrefix: true
   });
 
   expect(decoded).toEqual(-1337);
 
   encoded = encode(-1938573912, {
-    characters: "abcd",
+    characters: 'abcd',
     useNegativePrefix: true
   });
-  decoded = decode(encoded, { characters: "abcd", useNegativePrefix: true });
+  decoded = decode(encoded, { characters: 'abcd', useNegativePrefix: true });
 
   expect(decoded).toEqual(-1938573912);
 
-  encoded = encode(-0, { characters: "abcd", useNegativePrefix: true });
-  decoded = decode(encoded, { characters: "abcd", useNegativePrefix: true });
+  encoded = encode(-0, { characters: 'abcd', useNegativePrefix: true });
+  decoded = decode(encoded, { characters: 'abcd', useNegativePrefix: true });
 
   expect(decoded).toEqual(0);
 });
 
-it("throws when character set has multiple same characters", () => {
+it('throws when character set has multiple same characters', () => {
   expect(() =>
-    encode(-1337, { characters: "aa", useNegativePrefix: true })
+    encode(-1337, { characters: 'aa', useNegativePrefix: true })
   ).toThrow();
 
-  expect(() => encode(1337, { characters: "aa" })).toThrow();
-  expect(() => decode("aabb", { characters: "aabb" })).toThrow();
+  expect(() => encode(1337, { characters: 'aa' })).toThrow();
+  expect(() => decode('aabb', { characters: 'aabb' })).toThrow();
 });
