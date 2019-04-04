@@ -40,7 +40,7 @@ encode(-1234, {
 });
 > "-JI"
 
-decode(TODO, {
+decode("-JI", {
   useNegativePrefix: true
 });
 > -1234
